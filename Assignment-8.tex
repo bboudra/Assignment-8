@@ -5,10 +5,122 @@
 \begin{document}
 \maketitle
 \tableofcontents
-\section{Part 1}
-\subsection{stuff}
-\subsubsection{otherstuff}
+\section{Prompt}
+Write up a careful example of the entire RSA process, including $d$, encrypting $a$, and decrypting $c$, with $p = 137$, $q = 241$, $e = 53$, and $a = 12345$. You will be expected to do all of this (including efficient modular exponentiation and the extended Euclidean Algorithms) by hand during the test, so do the exercise that way, just using an ordinary calculator.
+\section{Solution}
+\subsection{Step 1: Solve for $n$ and $\phi$}
+\begin{equation*}
+  n = p*q = 137 * 241 = 33017, \tab n = 33017
+\end{equation*}
+\begin{equation*}
+  \phi(n) = (p-1) * (q-1) = 136 * 240 = 32640, \tab \phi = 32640
+\end{equation*}
+\subsection{Step 2: Solve for $d$}
+\begin{tabular}{c|c|c|c|c|c}
+  $\phi$ & $e$ & $q$ & $r$ & $s$ & $d$ \\ \hline
+  32640 & 53 & 615 & 45 & -20 & 12317\\
+  53 & 45 & 1 & 8 & 17 & -20\\
+  45 & 8 & 5 & 5 & -3 & 17\\
+  8 & 5 & 1 & 3 & 2 & -3\\
+  5 & 3 & 1 & 2 & -1 & 2\\
+  3 & 2 & 1 & 1 & 1 & -1\\
+  2 & 1 & 2 & 0 & 0 & 1\\
+  1 & 0 & &  & 1 & 0
+
+\end{tabular}
+
+Equation I used for calculating the $d$ values on the right side of the table.
+\begin{equation*}
+  d = s - d * q
+\end{equation*}
+Verification:
+\begin{equation*}
+  1 = \phi * s + e * d \tab 1 = 32640 * -20 + 53 * 12317 \tab 1 = -652800 + 652801 \tab 1 = 1
+\end{equation*}
+The equation is true, Thus the $d$ value is accurate.\\
+$d = 12317$
+\subsection{Step 3: Calculate c}
 \begin{equation}
-  2 * 2 = 4
+  c = a^e
 \end{equation}
+Since we are calculating the value in the world $Z_n$
+\begin{equation}
+c = a^e\ mod\ n
+\end{equation}
+Also recognize that:
+\begin{equation}
+  c = a^{53}, \tab c = a^{32} * a^{16} * a^4 * a^1
+\end{equation}
+Now to calculate those values, we will create a table of $a^{2^m}$ for $a^{2^m} < a^{53}$\\
+\begin{tabular}{c|c}
+  $n$ &$a^{2^n}$ \\ \hline
+  0 & 12345 \\
+  1 & 25570 \\
+  2 & 22266 \\
+  3 & 24501 \\
+  4 & 16924 \\
+  5 & 32318 \\
+\end{tabular}
+\begin{equation}
+  c= a^{53} = 32318 * 16924 * 22266 * 12345\ mod\ 33017,\tab c = 24983
+\end{equation}
+Thus, $c = 24983$
+\subsection{Step 4: Calculate $c^d$}
+\begin{equation}
+  a = c^d \tab a = a^{e^d}
+\end{equation}
+Since we are calculating the value in the world $Z_n$
+\begin{equation}
+ a = c^d\ mod\ n
+\end{equation}
+Also recognize that $c^d$ is some subset of:
+\begin{equation*}
+  S = \left\{c^{2^m} \mid c^{2^m} < c^{12317}\right\}
+\end{equation*}
+we will use the method of dividing by 2 and using odd remainders to find the subset:
+
+\begin{tabular}{c|c|c|c}
+  n & Current Value & $\frac{Current value}{2}$ & remainder\\ \hline
+  0 & 12317 &6158 & 1 \\
+  1 & 6158 & 3079 & 0 \\
+  2 & 3079 & 1539 & 1 \\
+  3 & 1539 & 769 & 1 \\
+  4 & 769 & 384 & 1 \\
+  5 & 384 & 192 & 0 \\
+  6 & 192 & 96 & 0 \\
+  7 & 96 & 48 & 0 \\
+  8 & 48 & 24 & 0 \\
+  9 & 24 & 12 & 0 \\
+  10 & 12 & 6 & 0 \\
+  11 & 6 & 3 & 0 \\
+  12 & 3 & 1 & 1 \\
+  13 & 1 & 0 & 1 \\
+\end{tabular}
+
+Thus $c^{12317}$ = $c^{2^{13}} *  c^{2^{12}} * c^{2^4} * c^{2^3} * c^{2^2} * c^{2^0}$
+
+Now to calculate those values, we will create a table of the values in set $S$.
+
+\begin{tabular}{c|c}
+  $m$ & $c^m$ \\ \hline
+  0 & 24983 \\
+  1 & 29938 \\
+  2 & 4362 \\
+  3 & 9252 \\
+  4 & 19440 \\
+  5 & 1018\\
+  6 & 12797 \\
+  7 & 31906 \\
+  8 & 12692 \\
+  9 & 29938 \\
+  10 & 4362 \\
+  11 & 9252 \\
+  12 & 19440 \\
+  13 & 1018 \\
+\end{tabular}
+
+$a = 1018 * 19940 * 19440 * 9252 * 4362 * 24983\ mod\ n = 12345$
+\subsection{Result}
+$12345 = 12345$ Therefore, The RSA Process is complete and correct
+
 \end{document}

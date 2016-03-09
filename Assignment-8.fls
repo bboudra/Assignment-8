@@ -24,8 +24,6 @@ INPUT c:/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 INPUT c:/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 INPUT c:/texlive/2015/texmf-dist/tex/latex/sectsty/sectsty.sty
 INPUT c:/texlive/2015/texmf-dist/tex/latex/sectsty/sectsty.sty
-INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT Algorithms.sty
 INPUT Algorithms.sty
 INPUT c:/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
@@ -262,6 +260,7 @@ INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT Assignment-8.toc
 INPUT Assignment-8.toc
+INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
 INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
@@ -286,7 +285,14 @@ OUTPUT Assignment-8.pdf
 INPUT c:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT Assignment-8.aux
 INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
 INPUT c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
